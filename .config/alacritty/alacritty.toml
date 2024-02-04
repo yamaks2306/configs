@@ -1,0 +1,27 @@
+import = [
+    "~/.config/alacritty/themes/themes/nord.toml"
+]
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0
+blur = true
+startup_mode = "Fullscreen"
+
+[window.padding]
+x = 5
+y = 5
+
+[env]
+
+[scrolling]
+history = 1000
+multiplier = 3
+
+[font]
+size = 14
+normal = { family = "Source Code Pro", style = "Regular" }
+bold = { family = "Source Code Pro", style = "Bold" }
+italic = { family = "Source Code Pro", style = "Italic" }
+
