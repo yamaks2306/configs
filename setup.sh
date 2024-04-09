@@ -7,23 +7,27 @@ install_tpm() {
 }
 
 setup_tmux_conf() {
-  ln -sfn  "$HOME/configs/tmux.conf" "$HOME/.tmux.conf"
-  echo "Tmux config symlink created"
+  cp -f "$HOME/configs/tmux.conf" "$HOME/.tmux.conf"
+  echo "Tmux config added"
 }
 
 setup_alacritty() {
-  ln -sfn  "$HOME/configs/config/alacritty"  "$HOME/.config/alacritty"
-  echo "Alacritty config symlink created"
+  cp -rf "$HOME/configs/config/alacritty"  "$HOME/.config/alacritty"
+  echo "Alacritty config added"
 }
 
 setup_helix() {
-  ln -sfn  "$HOME/configs/config/helix"  "$HOME/.config/helix"
-  echo "Helix config symlink created"
+  cp -rf  "$HOME/configs/config/helix"  "$HOME/.config/helix"
+  echo "Helix config added"
 }
 
 setup_mac() {
   # setup zshrc
-  ln -sfn "$HOME/configs/zshrc" "$HOME/.zshrc"
+  cp -f "$HOME/configs/zshrc" "$HOME/.zshrc"
+
+  # install starship
+  which starship > /dev/null || (curl -sS https://starship.rs/install.sh | sh)
+  cp -f "$HOME/configs/config/starship.toml" "$HOME/.config/starship.toml"
   
   # install brew
   which brew > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -40,6 +44,7 @@ setup_mac() {
   which tmux > /dev/null || brew install tmux
   setup_tmux_conf
   install_tpm
+  tmux -u
   echo "For install tmux plugins you need use Prefix+I shortcut"
 
   # install helix
