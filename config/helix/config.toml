@@ -1,0 +1,17 @@
+theme = "nord"
+
+[editor]
+line-number = "relative"
+mouse = true
+bufferline = "multiple"
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+left = ["mode", "spinner"]
+center = ["file-name", "read-only-indicator", "version-control"]
+right = ["diagnostics", "position", "position-percentage", "total-line-numbers"]
+
+[editor.file-picker]
+hidden = false
