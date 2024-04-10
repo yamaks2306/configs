@@ -15,3 +15,8 @@ right = ["diagnostics", "position", "position-percentage", "total-line-numbers"]
 
 [editor.file-picker]
 hidden = false
+
+[editor.indent-guides]
+render = true
+character = "╎"
+skip-level = 1
