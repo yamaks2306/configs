@@ -4,6 +4,9 @@ theme = "nord"
 line-number = "relative"
 mouse = true
 bufferline = "multiple"
+cursorline = true
+# cursorcolumn = true
+auto-save = true
 
 [editor.statusline]
 mode.normal = "NORMAL"
@@ -19,4 +22,19 @@ hidden = false
 [editor.indent-guides]
 render = true
 character = "╎"
-skip-level = 1
+skip-level = 0
+
+[editor.whitespace.render]
+space = "none"
+tab = "all"
+nbsp = "all"
+nnbsp = "all"
+newline = "all"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+nnbsp = "␣"
+tab = "→"
+newline = "⏎"
+tabpad = "·" # Tabs will look like "→···" (depending on tab width)

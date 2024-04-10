@@ -1,0 +1,39 @@
+# https://www.schemastore.org/json/ - json schema store
+[[language]]
+name = "yaml"
+file-types = ["yaml", "yml"]
+language-servers = [ "yaml-language-server" ]
+auto-format = true
+formatter = { command = "yamlfmt", args = ["-"] }
+
+[language-server.yaml-language-server.config.yaml]
+completion = true
+validate = true
+hover = true
+format = { enable = true }
+
+[language-server.yaml-language-server.config.yaml.schemas]
+kubernetes = [ "*deployment*.yaml",
+ "*service*.yaml",
+ "*configmap*.yaml",
+ "*secret*.yaml",
+ "*pod*.yaml",
+ "*namespace*.yaml",
+ "*ingress*.yaml" 
+]
+"https://json.schemastore.org/github-workflow.json" = [".github/workflows/*"]
+"https://json.schemastore.org/github-action.json" = [".github/action.{yaml,yml}", "action.{yaml,yml}"]
+"https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json" = [
+  "*docker-compose*.{yaml,yml,tpl}",
+  "*compose*.{yaml,yml,tpl}"
+]
+"https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/playbook" = [
+  "playbooks/*.{yaml,yml}",
+  "*playbook*.{yaml,yml}"
+]
+"https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks" = [
+  "roles/*/tasks/*.{yaml,yml}"
+]
+"https://json.schemastore.org/pulumi.json" = [
+  "Pulumi*.{yaml,yml}"
+]
