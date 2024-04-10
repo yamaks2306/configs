@@ -37,3 +37,6 @@ kubernetes = [ "*deployment*.yaml",
 "https://json.schemastore.org/pulumi.json" = [
   "Pulumi*.{yaml,yml}"
 ]
+"https://json.schemastore.org/chart.json" = [
+  "Chart.yaml"
+]
