@@ -9,6 +9,7 @@ alias k="kubectl"
 alias kubecontext="kubectl config get-contexts"
 alias kubeswitchcontext="kubectl config use-context"
 alias c="clear"
+alias q="exit"
 alias python=/usr/local/bin/python3.11
 
 #BINDKEYS
