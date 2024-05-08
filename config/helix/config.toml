@@ -38,3 +38,6 @@ nnbsp = "␣"
 tab = "→"
 newline = "⏎"
 tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+
+[keys.normal]
+C-g = ":sh tmux popup -d \"#{pane_current_path}\" -xC -yC -w75% -h75% -E gitui"

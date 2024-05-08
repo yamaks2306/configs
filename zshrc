@@ -1,5 +1,8 @@
 ulimit -n 12288
 
+# SET DEFAULT EDITOR
+export EDITOR=hx
+
 # ALIASES
 alias ls="ls -lah"
 alias k="kubectl"
@@ -12,8 +15,19 @@ alias python=/usr/local/bin/python3.11
 bindkey '^R' history-incremental-search-backward
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"
 
-
+# YAZI FUNCTIONS
+# Yazi shel wrapper - changing working directory when exiting Yazi
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 # Highlight the current autocomplete option
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
