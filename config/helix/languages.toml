@@ -4,7 +4,7 @@ name = "yaml"
 file-types = ["yaml", "yml"]
 language-servers = [ "yaml-language-server" ]
 auto-format = true
-formatter = { command = "yamlfmt", args = ["-"] }
+formatter = { command = "yamlfmt", args = ["-conf", "$HOME/.config/helix/.yamlfmt"] }
 
 [language-server.yaml-language-server.config.yaml]
 completion = true
