@@ -3,31 +3,35 @@
 set -e
 
 install_tpm() {
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
+  CONF_DIR='~/.tmux/plugins/tpm'
+  if [ -d  $CONF_DIR ]; then  
+    echo "$CONF_DIR not exist, clone repo..."
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
 }
 
 setup_tmux_conf() {
-  ln -s "$HOME/configs/tmux.conf" "$HOME/.tmux.conf"
+  ln -s "$HOME/configs/tmux.conf" "$HOME/.tmux.conf" || true
   echo "Tmux config added"
 }
 
 setup_alacritty() {
-  ln -s "$HOME/configs/config/alacritty"  "$HOME/.config/alacritty"
+  ln -s "$HOME/configs/config/alacritty"  "$HOME/.config/alacritty" || true
   echo "Alacritty config added"
 }
 
 setup_helix() {
-  ln -s  "$HOME/configs/config/helix"  "$HOME/.config/helix"
-  echo "Helix config added"
+    ln -s $HOME/configs/config/helix $HOME/.config/helix || true
+    echo "Helix config added"
 }
 
 setup_mac() {
   # setup zshrc
-  ln -s "$HOME/configs/zshrc" "$HOME/.zshrc"
+  ln -s "$HOME/configs/zshrc" "$HOME/.zshrc" || true
 
   # install starship
   which starship > /dev/null || (curl -sS https://starship.rs/install.sh | sh)
-  ln -s "$HOME/configs/config/starship.toml" "$HOME/.config/starship.toml"
+  ln -s "$HOME/configs/config/starship.toml" "$HOME/.config/starship.toml" || true
   
   # install brew
   which brew > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
