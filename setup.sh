@@ -7,34 +7,34 @@ install_tpm() {
 }
 
 setup_tmux_conf() {
-  cp -f "$HOME/configs/tmux.conf" "$HOME/.tmux.conf"
+  ln -s "$HOME/configs/tmux.conf" "$HOME/.tmux.conf"
   echo "Tmux config added"
 }
 
 setup_alacritty() {
-  cp -rf "$HOME/configs/config/alacritty"  "$HOME/.config/alacritty"
+  ln -s "$HOME/configs/config/alacritty"  "$HOME/.config/alacritty"
   echo "Alacritty config added"
 }
 
 setup_helix() {
-  cp -rf  "$HOME/configs/config/helix"  "$HOME/.config/helix"
+  ln -s  "$HOME/configs/config/helix"  "$HOME/.config/helix"
   echo "Helix config added"
 }
 
 setup_mac() {
   # setup zshrc
-  cp -f "$HOME/configs/zshrc" "$HOME/.zshrc"
+  ln -s "$HOME/configs/zshrc" "$HOME/.zshrc"
 
   # install starship
   which starship > /dev/null || (curl -sS https://starship.rs/install.sh | sh)
-  cp -f "$HOME/configs/config/starship.toml" "$HOME/.config/starship.toml"
+  ln -s "$HOME/configs/config/starship.toml" "$HOME/.config/starship.toml"
   
   # install brew
   which brew > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew update
 
   # install hack-nerd-font
-  which font-hack-nerd-font > /dev/null || brew install font-hack-nerd-font
+  which font-inconsolata-lgc-nerd-font > /dev/null || brew install font-inconsolata-lgc-nerd-font
 
   # install alacritty
   which alacritty > /dev/null || brew install alacritty
