@@ -22,8 +22,11 @@ threshold = 30
 style = "bold yellow"
 
 [kubernetes]
-format = 'on [☸ ($cluster)\($context\) ](cyan) '
+format = 'on [☸ ($context) ](blue) '
 disabled = false
 
 [shell]
+disabled = true
+
+[docker_context]
 disabled = true
