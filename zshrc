@@ -1,5 +1,15 @@
 ulimit -n 12288
 
+#OPTIONS
+setopt EXTENDED_HISTORY
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+
 # SET DEFAULT EDITOR
 export EDITOR=hx
 
@@ -14,6 +24,9 @@ alias python=/usr/local/bin/python3.11
 
 #BINDKEYS
 bindkey '^R' history-incremental-search-backward
+
+#AUTOSUGGESTIONS  https://github.com/zsh-users/zsh-autosuggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
