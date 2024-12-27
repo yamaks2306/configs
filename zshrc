@@ -28,6 +28,8 @@ bindkey '^R' history-incremental-search-backward
 #AUTOSUGGESTIONS  https://github.com/zsh-users/zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+fpath+=~/.zfunc
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
@@ -58,3 +60,4 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 # Initialize the autocompletion
 autoload -Uz compinit && compinit -i
 
+export PATH="/opt/homebrew/bin:$PATH"
