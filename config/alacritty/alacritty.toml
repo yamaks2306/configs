@@ -1,7 +1,7 @@
 
 [terminal.shell]
 program = "/bin/zsh"
-args = ["-l", "-c", "tmux attach || tmux"]
+args = ["-l", "-c", "zellij attach || zellij"]
 
 [window]
 decorations = "buttonless"
@@ -16,6 +16,7 @@ x = 5
 y = 5
 
 [env]
+EDITOR = "hx"
 
 [scrolling]
 history = 1000
