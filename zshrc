@@ -12,15 +12,33 @@ setopt HIST_REDUCE_BLANKS
 
 # SET DEFAULT EDITOR
 export EDITOR=hx
+export TERM=xterm-256color
 
 # ALIASES
 alias ls="ls -lah"
 alias k="kubectl"
-alias kubecontext="kubectl config get-contexts"
-alias kubeswitchcontext="kubectl config use-context"
+#alias kubecontext="kubectl config get-contexts"
+#alias kubeswitchcontext="kubectl config use-context"
 alias c="clear"
 alias q="exit"
-alias python=/usr/local/bin/python3.11
+alias python=/usr/bin/python3
+
+unalias gch 2>/dev/null
+
+gch() {
+  local branch
+  branch=$(git branch | fzf) || return
+  [ -n "$branch" ] || return
+  git checkout "${branch}"
+}
+
+kubecontext() {
+	local context
+	context=$(kubectl config get-contexts --no-headers | tr -d '*' | awk '{print $1}' | fzf) || return
+	[ -n "$context" ] || return
+	kubectl config use-context "${context}"
+}
+
 
 #BINDKEYS
 bindkey '^R' history-incremental-search-backward
