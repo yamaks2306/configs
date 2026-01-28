@@ -27,7 +27,7 @@ unalias gch 2>/dev/null
 
 gch() {
   local branch
-  branch=$(git branch | fzf) || return
+  branch=$(git for-each-ref refs/heads/ --format='%(refname:short)' | fzf) || return
   [ -n "$branch" ] || return
   git checkout "${branch}"
 }
